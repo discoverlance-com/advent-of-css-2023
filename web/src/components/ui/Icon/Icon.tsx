@@ -1,5 +1,3 @@
-import Sprite from './sprite.svg'
-
 interface Props {
   icon: string
   size?: number
@@ -16,7 +14,7 @@ export const Icon = ({ icon, size = 24, color, className }: Props) => {
       height={size}
       fill={color || 'black'}
     >
-      <use xlinkHref={`${Sprite}#${icon}`}></use>
+      <use xlinkHref={`/icons/sprite.svg#${icon}`}></use>
     </svg>
   )
 }
