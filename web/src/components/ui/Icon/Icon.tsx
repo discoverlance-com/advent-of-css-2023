@@ -10,6 +10,7 @@ export const Icon = ({ icon, size = 24, color, className }: IconProps) => {
     <svg
       className={className}
       role="img"
+      data-icon={icon}
       width={size}
       height={size}
       fill={color || 'black'}

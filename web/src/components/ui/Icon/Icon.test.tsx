@@ -9,6 +9,7 @@ describe('Icon', () => {
   it('renders successfully', () => {
     expect(() => {
       render(<Icon icon="calendar" />)
+      expect(screen.getByRole('img')).toHaveAttribute('data-icon', 'calendar')
     }).not.toThrow()
   })
 

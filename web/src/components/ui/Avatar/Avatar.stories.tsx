@@ -19,6 +19,7 @@ const meta: Meta<typeof Avatar> = {
     },
     size: {
       description: 'Size of the avatar icon',
+      defaultValue: 32,
     },
     name: {
       description: 'The name to be used for getting initials',

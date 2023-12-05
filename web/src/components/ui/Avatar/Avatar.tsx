@@ -1,6 +1,8 @@
 import { Icon, type IconProps } from 'src/components/ui/Icon/Icon'
 import { generateInitials } from 'src/lib/utils'
 
+import Indicator from '../Indicator/Indicator'
+
 type InitialsProp = {
   name: string
 }
@@ -29,16 +31,16 @@ type Props =
     } & IconProps)
 
 const avatarClassName =
-  'relative flex h-[68px] w-[68px] cursor-pointer items-center justify-center rounded-full border-[6px] border-white hover:border-turquoiseGreen'
+  'relative h-18 w-18 cursor-pointer inline-block rounded-full border-avatar border-white hover:border-turquoiseGreen'
 
 const Avatar = (props: Props) => {
   if (props.variant === 'initials') {
     const initials = generateInitials(props.name)
     return (
-      <div className={`${avatarClassName} bg-cruseo`}>
-        <span className="font-sans text-2xl font-bold text-white">
-          {initials}
-        </span>
+      <div
+        className={`${avatarClassName} center bg-cruseo uppercase text-white`}
+      >
+        <span className="font-sans text-2xl font-bold">{initials}</span>
 
         <ExtraProperties isSanta={props.isSanta} indicator={props.indicator} />
       </div>
@@ -48,8 +50,8 @@ const Avatar = (props: Props) => {
   if (props.variant === 'icon') {
     const { variant: _, ...iconProps } = props
     return (
-      <div className={`${avatarClassName} bg-cruseo`}>
-        <Icon color="white" {...iconProps} />
+      <div className={`${avatarClassName} center bg-cruseo text-white`}>
+        <Icon size={32} {...iconProps} />
 
         <ExtraProperties isSanta={props.isSanta} indicator={props.indicator} />
       </div>
@@ -62,7 +64,9 @@ const Avatar = (props: Props) => {
     return (
       <div className={`${avatarClassName}`}>
         <img
-          className={`${className} aspect-square h-full w-full rounded-full`}
+          className={`${
+            className ?? ''
+          } aspect-square h-full w-full rounded-full object-cover`}
           alt={alt}
           {...otherImg}
         />
@@ -87,23 +91,16 @@ function ExtraProperties({
   return (
     <>
       {indicator && (
-        <img
-          src={
-            indicator === 'error'
-              ? '/error.png'
-              : indicator === 'warning'
-              ? '/warning.png'
-              : '/success.png'
-          }
-          className="absolute -bottom-3 right-0 h-6 w-6"
-          alt="Indicator"
+        <Indicator
+          type={indicator}
+          containerClassName="absolute -bottom-3 right-0"
         />
       )}
 
       {isSanta && (
         <img
           src="/avatars/santa-hat.png"
-          className="absolute -top-4 right-0 h-8 w-8"
+          className="absolute -right-2 -top-4 h-8 w-10"
           alt="Santa Hat"
         />
       )}
