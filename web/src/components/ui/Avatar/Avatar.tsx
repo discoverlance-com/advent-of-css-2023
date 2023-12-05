@@ -11,31 +11,36 @@ interface ImageProps
     HTMLImageElement
   > {}
 
-interface ImageIndicatorProps
-  extends React.DetailedHTMLProps<
-    React.ImgHTMLAttributes<HTMLImageElement>,
-    HTMLImageElement
-  > {
-  indicator: 'error' | 'warning' | 'success'
-}
-
 type Props =
   | ({
       variant: 'initials'
+      indicator?: 'error' | 'warning' | 'success'
+      isSanta?: boolean
     } & InitialsProp)
-  | ({ variant: 'image' } & ImageProps)
-  | ({ variant: 'imageSanta' } & ImageProps)
-  | ({ variant: 'imageIndicator' } & ImageIndicatorProps)
-  | ({ variant: 'icon' } & IconProps)
+  | ({
+      variant: 'image'
+      indicator?: 'error' | 'warning' | 'success'
+      isSanta?: boolean
+    } & ImageProps)
+  | ({
+      variant: 'icon'
+      indicator?: 'error' | 'warning' | 'success'
+      isSanta?: boolean
+    } & IconProps)
+
+const avatarClassName =
+  'relative flex h-[68px] w-[68px] cursor-pointer items-center justify-center rounded-full border-[6px] border-white hover:border-turquoiseGreen'
 
 const Avatar = (props: Props) => {
   if (props.variant === 'initials') {
     const initials = generateInitials(props.name)
     return (
-      <div className="flex h-[68px] w-[68px] items-center justify-center rounded-full border-[6px] border-white bg-cruseo">
+      <div className={`${avatarClassName} bg-cruseo`}>
         <span className="font-sans text-2xl font-bold text-white">
           {initials}
         </span>
+
+        <ExtraProperties isSanta={props.isSanta} indicator={props.indicator} />
       </div>
     )
   }
@@ -43,8 +48,10 @@ const Avatar = (props: Props) => {
   if (props.variant === 'icon') {
     const { variant: _, ...iconProps } = props
     return (
-      <div className="flex h-[68px] w-[68px] items-center justify-center rounded-full border-[6px] border-turquoiseGreen bg-cruseo">
+      <div className={`${avatarClassName} bg-cruseo`}>
         <Icon color="white" {...iconProps} />
+
+        <ExtraProperties isSanta={props.isSanta} indicator={props.indicator} />
       </div>
     )
   }
@@ -53,67 +60,53 @@ const Avatar = (props: Props) => {
     const { variant: _, className, alt, ...otherImg } = props
 
     return (
-      <div className="flex h-[68px] w-[68px] items-center justify-center rounded-full border-[6px] border-white">
+      <div className={`${avatarClassName}`}>
         <img
           className={`${className} aspect-square h-full w-full rounded-full`}
           alt={alt}
           {...otherImg}
         />
+
+        <ExtraProperties isSanta={props.isSanta} indicator={props.indicator} />
       </div>
     )
   }
 
-  if (props.variant === 'imageIndicator') {
-    const { variant: _, indicator, className, alt, ...otherImg } = props
-    const src =
-      indicator === 'error'
-        ? '/error.png'
-        : indicator === 'warning'
-        ? '/warning.png'
-        : '/success.png'
+  return null
+}
 
-    return (
-      <div className="relative flex h-[68px] w-[68px] items-center justify-center rounded-full border-[6px] border-white">
-        <img
-          className={`${className} aspect-square h-full w-full rounded-full`}
-          alt={alt}
-          {...otherImg}
-        />
+export default Avatar
 
+function ExtraProperties({
+  isSanta,
+  indicator,
+}: {
+  indicator: Props['indicator']
+  isSanta: Props['isSanta']
+}) {
+  return (
+    <>
+      {indicator && (
         <img
-          src={src}
+          src={
+            indicator === 'error'
+              ? '/error.png'
+              : indicator === 'warning'
+              ? '/warning.png'
+              : '/success.png'
+          }
           className="absolute -bottom-3 right-0 h-6 w-6"
           alt="Indicator"
         />
-      </div>
-    )
-  }
+      )}
 
-  if (props.variant === 'imageSanta') {
-    const { variant: _, className, alt, ...otherImg } = props
-
-    return (
-      <div className="relative flex h-[68px] w-[68px] items-center justify-center rounded-full border-[6px] border-white">
-        <img
-          className={`${className} aspect-square h-full w-full rounded-full`}
-          alt={alt}
-          {...otherImg}
-        />
-
+      {isSanta && (
         <img
           src="/avatars/santa-hat.png"
           className="absolute -top-4 right-0 h-8 w-8"
           alt="Santa Hat"
         />
-      </div>
-    )
-  }
-  return (
-    <div>
-      <h2>{'Avatar'}</h2>
-      <p>{'Find me in ./web/src/components/Avatar/Avatar.tsx'}</p>
-    </div>
+      )}
+    </>
   )
 }
-
-export default Avatar
