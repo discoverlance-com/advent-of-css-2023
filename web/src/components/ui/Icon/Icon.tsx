@@ -1,11 +1,11 @@
-interface Props {
+export interface IconProps {
   icon: string
   size?: number
   color?: string
   className?: string
 }
 
-export const Icon = ({ icon, size = 24, color, className }: Props) => {
+export const Icon = ({ icon, size = 24, color, className }: IconProps) => {
   return (
     <svg
       className={className}

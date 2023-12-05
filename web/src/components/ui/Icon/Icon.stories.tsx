@@ -18,7 +18,18 @@ const meta: Meta<typeof Icon> = {
   component: Icon,
   tags: ['autodocs'],
   argTypes: {
-    color: { defaultValue: 'black', control: 'color' },
+    color: {
+      defaultValue: 'black',
+      control: 'color',
+      description: 'Color of the icon (default is black)',
+    },
+    size: {
+      defaultValue: 24,
+      description: 'Size of the icon (default is 24 px)',
+    },
+  },
+  args: {
+    color: '#000000',
   },
 }
 
