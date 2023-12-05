@@ -6,9 +6,9 @@ import Indicator from './Indicator'
 //    https://redwoodjs.com/docs/testing#testing-components
 
 describe('Indicator', () => {
-  it('renders successfully', () => {
+  it('renders success', () => {
     expect(() => {
-      const { getByRole } = render(<Indicator />)
+      const { getByRole } = render(<Indicator type="success" />)
       expect(getByRole('img')).toHaveAttribute('data-icon', 'check')
     }).not.toThrow()
   })
