@@ -23,6 +23,13 @@
   /* input:not(:placeholder-shown) + span {
     @apply top-2 -mt-0 left-2;
   } */
+  input:invalid:not(:placeholder-shown)  {
+    @apply border-fireEngineRed bg-orangeRed text-white;
+  }
+
+  input:invalid:not(:placeholder-shown)  + span {
+    @apply text-white;
+  }
 }
 
  @layer utilities {

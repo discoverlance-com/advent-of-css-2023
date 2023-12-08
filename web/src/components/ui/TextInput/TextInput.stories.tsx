@@ -39,6 +39,7 @@ export const Email: Story = {
   args: {
     type: 'email',
     label: 'Email',
+    required: true,
   },
 }
 
