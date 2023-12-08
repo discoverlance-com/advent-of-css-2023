@@ -12,7 +12,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-import Indicator from './Indicator'
+import { Indicator } from './Indicator'
 
 const meta: Meta<typeof Indicator> = {
   component: Indicator,

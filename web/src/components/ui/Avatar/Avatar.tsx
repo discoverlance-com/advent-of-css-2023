@@ -1,7 +1,6 @@
 import { Icon, type IconProps } from 'src/components/ui/Icon/Icon'
+import { Indicator } from 'src/components/ui/Indicator/Indicator'
 import { generateInitials } from 'src/lib/utils'
-
-import Indicator from '../Indicator/Indicator'
 
 type InitialsProp = {
   name: string
@@ -38,7 +37,7 @@ const Avatar = (props: Props) => {
     const initials = generateInitials(props.name)
     return (
       <div
-        className={`${avatarClassName} center bg-cruseo uppercase text-white`}
+        className={`text-white uppercase ${avatarClassName} center bg-cruseo`}
       >
         <span className="font-sans text-2xl font-bold">{initials}</span>
 
@@ -50,7 +49,7 @@ const Avatar = (props: Props) => {
   if (props.variant === 'icon') {
     const { variant: _, ...iconProps } = props
     return (
-      <div className={`${avatarClassName} center bg-cruseo text-white`}>
+      <div className={`text-white ${avatarClassName} center bg-cruseo`}>
         <Icon size={32} {...iconProps} />
 
         <ExtraProperties isSanta={props.isSanta} indicator={props.indicator} />
@@ -64,9 +63,8 @@ const Avatar = (props: Props) => {
     return (
       <div className={`${avatarClassName}`}>
         <img
-          className={`${
-            className ?? ''
-          } aspect-square h-full w-full rounded-full object-cover`}
+          className={`aspect-square h-full w-full rounded-full  object-cover ${
+            className ?? ''}`}
           alt={alt}
           {...otherImg}
         />
@@ -100,7 +98,7 @@ function ExtraProperties({
       {isSanta && (
         <img
           src="/avatars/santa-hat.png"
-          className="absolute -right-2 -top-4 h-8 w-10"
+          className="absolute -right-2 -top-4 w-10 h-8"
           alt="Santa Hat"
         />
       )}

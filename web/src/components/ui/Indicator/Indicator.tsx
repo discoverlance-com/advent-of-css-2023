@@ -9,7 +9,11 @@ interface Props {
   containerClassName?: string
 }
 
-const Indicator = ({ type, containerClassName, iconSize = 16 }: Props) => {
+export const Indicator = ({
+  type,
+  containerClassName,
+  iconSize = 16,
+}: Props) => {
   const icon =
     type === 'error' ? 'minus' : type === 'warning' ? 'question' : 'check'
   const bg =
@@ -29,5 +33,3 @@ const Indicator = ({ type, containerClassName, iconSize = 16 }: Props) => {
     </div>
   )
 }
-
-export default Indicator
