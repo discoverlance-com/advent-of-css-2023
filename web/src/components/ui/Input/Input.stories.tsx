@@ -12,15 +12,15 @@
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TextInput } from './TextInput'
+import { Input } from './Input'
 
-const meta: Meta<typeof TextInput> = {
-  component: TextInput,
+const meta: Meta<typeof Input> = {
+  component: Input,
   tags: ['autodocs'],
   render(props) {
     return (
       <div className="max-w-md">
-        <TextInput {...props} />
+        <Input {...props} />
       </div>
     )
   },
@@ -33,7 +33,7 @@ const meta: Meta<typeof TextInput> = {
 
 export default meta
 
-type Story = StoryObj<typeof TextInput>
+type Story = StoryObj<typeof Input>
 
 export const Email: Story = {
   args: {

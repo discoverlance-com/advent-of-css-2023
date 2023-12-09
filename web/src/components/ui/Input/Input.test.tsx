@@ -1,14 +1,14 @@
 import { render, screen } from '@redwoodjs/testing/web'
 
-import { TextInput } from './TextInput'
+import { Input } from './Input'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('TextInput', () => {
+describe('Input', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<TextInput label="Email" />)
+      render(<Input label="Email" />)
 
       const input = screen.getByRole('textbox', { name: 'Email' })
 
