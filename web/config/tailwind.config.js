@@ -6,6 +6,9 @@ module.exports = {
       borderWidth: {
         avatar: '0.375rem' /* 6px */,
       },
+      backgroundImage: {
+        auth: "url('/images/bg__auth.svg')",
+      },
       colors: {
         supernova: '#fac900' /* yellow / warning */,
         spicyMustard: '#6e5a0d' /* dark yellow */,
