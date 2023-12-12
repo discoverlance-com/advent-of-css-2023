@@ -20,6 +20,10 @@
     @apply fill-current;
   }
 
+  main {
+    @apply z-10 relative mb-[350px] overflow-scroll;
+  }
+
   /* input:not(:placeholder-shown) + span {
     @apply top-2 -mt-0 left-2;
   } */
