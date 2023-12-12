@@ -23,4 +23,14 @@ export default meta
 
 type Story = StoryObj<typeof HamburgerMenu>
 
-export const Primary: Story = {}
+export const HamburgerShowing: Story = {
+  args: {
+    open: true,
+  },
+}
+
+export const CloseHamburger: Story = {
+  args: {
+    open: false,
+  },
+}
