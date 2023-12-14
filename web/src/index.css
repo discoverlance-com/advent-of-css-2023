@@ -36,8 +36,13 @@
   }
 }
 
- @layer utilities {
+@layer utilities {
   .center {
     @apply flex items-center justify-center;
   }
- }
+
+  .dropdown:before {
+    content: '';
+    @apply border-[12px] border-transparent border-b-white absolute -top-6 left-8;
+  }
+}
