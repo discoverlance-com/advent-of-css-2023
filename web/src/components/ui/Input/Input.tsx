@@ -1,5 +1,7 @@
 import { forwardRef } from 'react'
 
+import { InputField, Label } from '@redwoodjs/forms'
+
 import { Icon } from '../Icon/Icon'
 
 export interface InputProps
@@ -8,13 +10,15 @@ export interface InputProps
       React.InputHTMLAttributes<HTMLInputElement>,
       HTMLInputElement
     >,
-    'className' | 'placeholder' | 'ref'
+    'className' | 'placeholder' | 'ref' | 'type'
   > {
   label: string
+  name: string
   containerClassName?: string
   inputClassName?: string
   icon?: string
   onIconClick?: () => void
+  type?: Exclude<React.HTMLInputTypeAttribute, 'checkbox'>
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -26,22 +30,25 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       id,
       icon,
       name,
+      type,
       onIconClick,
       ...inputProps
     },
     ref
   ) => {
     return (
-      <div className={`${containerClassName}`}>
-        <label
+      <div className={`${containerClassName ?? ''}`}>
+        <Label
           htmlFor={id || name}
+          name={name}
           className="block relative w-full h-24 border"
         >
-          <input
-            className={`py-4 pr-14 pl-6 font-sans text-2xl font-bold text-black bg-white border-2 border-black border-none peer h-[inherit] w-[inherit] ${inputClassName}`}
+          <InputField
+            className={`peer h-[inherit] w-[inherit] border-2 border-none border-black bg-white py-4 pl-6 pr-14 font-sans text-2xl font-bold text-black ${
+              inputClassName ?? ''}`}
             name={name}
             id={id}
-            type="text"
+            type={type || 'text'}
             placeholder=""
             ref={ref}
             {...inputProps}
@@ -61,7 +68,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               <Icon icon={icon} size={32} />
             </button>
           )}
-        </label>
+        </Label>
 
         <style>{`
         input:not(:placeholder-shown) + span {

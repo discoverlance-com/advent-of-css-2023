@@ -12,6 +12,8 @@
 
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { Form } from '@redwoodjs/forms'
+
 import { Input } from './Input'
 
 const meta: Meta<typeof Input> = {
@@ -20,7 +22,9 @@ const meta: Meta<typeof Input> = {
   render(props) {
     return (
       <div className="max-w-md">
-        <Input {...props} />
+        <Form>
+          <Input {...props} />
+        </Form>
       </div>
     )
   },
@@ -40,6 +44,17 @@ export const Email: Story = {
     type: 'email',
     label: 'Email',
     required: true,
+    name: 'email',
+  },
+}
+
+export const Username: Story = {
+  args: {
+    type: 'text',
+    label: 'Username',
+    required: true,
+    name: 'username',
+    icon: 'user',
   },
 }
 
@@ -48,5 +63,6 @@ export const IconInput: Story = {
     type: 'password',
     label: 'Password',
     icon: 'eyeclosed',
+    name: 'password',
   },
 }

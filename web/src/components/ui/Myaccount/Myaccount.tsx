@@ -70,7 +70,7 @@ export const Myaccount = ({ username, image }: Props) => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ ease: 'easeInOut', duration: 0.2 }}
-            className={`block absolute left-6 top-24 z-50 py-5 pr-5 pl-4 bg-white dropdown`}
+            className={`block absolute left-6 top-24 z-50 py-5 pr-5 pl-4 w-52 bg-white dropdown`}
             id="account-dropdown"
             aria-label="My Account"
           >

@@ -1,3 +1,4 @@
+import { Form } from '@redwoodjs/forms'
 import { render, screen } from '@redwoodjs/testing/web'
 
 import { Input } from './Input'
@@ -8,7 +9,11 @@ import { Input } from './Input'
 describe('Input', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<Input label="Email" />)
+      render(
+        <Form>
+          <Input name="email" label="Email" />
+        </Form>
+      )
 
       const input = screen.getByRole('textbox', { name: 'Email' })
 

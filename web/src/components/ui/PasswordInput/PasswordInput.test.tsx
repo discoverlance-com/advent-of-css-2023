@@ -1,6 +1,7 @@
-import { render } from '@redwoodjs/testing/web'
+import { Form } from '@redwoodjs/forms'
+import { render, screen } from '@redwoodjs/testing/web'
 
-import PasswordInput from './PasswordInput'
+import { PasswordInput } from './PasswordInput'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
@@ -8,7 +9,17 @@ import PasswordInput from './PasswordInput'
 describe('PasswordInput', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<PasswordInput />)
+      render(
+        <Form>
+          <PasswordInput label="Password" name="password" />
+        </Form>
+      )
+
+      expect(screen.getByLabelText('Password')).toBeInTheDocument()
+      expect(screen.getByLabelText('Password')).toHaveAttribute(
+        'type',
+        'password'
+      )
     }).not.toThrow()
   })
 })

@@ -12,6 +12,8 @@
 
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { Form } from '@redwoodjs/forms'
+
 import { PasswordInput } from './PasswordInput'
 
 const meta: Meta<typeof PasswordInput> = {
@@ -20,12 +22,15 @@ const meta: Meta<typeof PasswordInput> = {
   render(props) {
     return (
       <div className="max-w-md">
-        <PasswordInput {...props} />
+        <Form>
+          <PasswordInput {...props} />
+        </Form>
       </div>
     )
   },
   args: {
     label: 'Password',
+    name: 'password',
   },
   parameters: {
     backgrounds: {
