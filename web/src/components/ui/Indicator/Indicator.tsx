@@ -1,6 +1,6 @@
 import { Icon } from '../Icon/Icon'
 
-interface Props {
+export interface IndicatorProps {
   type: 'success' | 'warning' | 'error'
   /**
    * Size of the icon (default: 16px)
@@ -13,7 +13,7 @@ export const Indicator = ({
   type,
   containerClassName,
   iconSize = 16,
-}: Props) => {
+}: IndicatorProps) => {
   const icon =
     type === 'error' ? 'minus' : type === 'warning' ? 'question' : 'check'
   const bg =
