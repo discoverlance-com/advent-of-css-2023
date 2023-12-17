@@ -8,12 +8,12 @@ export interface IconProps {
 export const Icon = ({ icon, size = 24, color, className }: IconProps) => {
   return (
     <svg
-      className={className}
+      className={className ?? ''}
       role="img"
       data-icon={icon}
       width={size}
       height={size}
-      fill={color || 'black'}
+      fill={color || 'white'}
     >
       <use xlinkHref={`/icons/sprite.svg#${icon}`}></use>
     </svg>
