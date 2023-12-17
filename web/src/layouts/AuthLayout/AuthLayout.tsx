@@ -14,7 +14,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
             alt="hello"
             className="mt-10 w-full h-40"
           />
-          {children}
+          <div>{children}</div>
         </div>
       </main>
 

@@ -15,6 +15,8 @@ export interface InputProps
   label: string
   name: string
   containerClassName?: string
+  labelClassName?: string
+  labelTextClassName?: string
   inputClassName?: string
   icon?: string
   onIconClick?: () => void
@@ -27,6 +29,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       label,
       containerClassName,
       inputClassName,
+      labelClassName,
+      labelTextClassName,
       id,
       icon,
       name,
@@ -41,7 +45,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <Label
           htmlFor={id || name}
           name={name}
-          className="block relative w-full h-24 border"
+          className={`relative block h-24 w-full border ${
+            labelClassName ?? ''}`}
         >
           <InputField
             className={`peer h-[inherit] w-[inherit] border-2 border-none border-black bg-white py-4 pl-6 pr-14 font-sans text-2xl font-bold text-black ${
@@ -55,7 +60,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           />
 
           {/* text-spanishGreen */}
-          <span className="absolute left-6 top-1/2 -mt-[calc(28px/2)] font-handwriting text-xl font-bold uppercase tracking-tighter transition-[left,top,margin] duration-300 peer-placeholder-shown:pointer-events-none peer-focus:left-2 peer-focus:top-2 peer-focus:-mt-0">
+          <span
+            className={`absolute left-6 top-1/2 -mt-[calc(28px/2)] font-handwriting text-xl font-bold uppercase tracking-tighter transition-[left,top,margin] duration-300 peer-placeholder-shown:pointer-events-none peer-focus:left-2 peer-focus:top-2 peer-focus:-mt-0 ${
+              labelTextClassName ?? ''}`}
+          >
             {label}
           </span>
 

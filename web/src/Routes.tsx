@@ -14,8 +14,11 @@ import AuthLayout from './layouts/AuthLayout/AuthLayout'
 const Routes = () => {
   return (
     <Router>
+      <Route path="/" page={HomePage} name="home" />
       <Set wrap={AuthLayout}>
-        <Route path="/" page={HomePage} name="home" />
+        <Route path="/rsvp" page={RsvpPage} name="rsvp" />
+        <Route path="/rsvp-decline" page={RsvpDeclinePage} name="rsvpDecline" />
+        <Route path="/rsvp-accept" page={RsvpAcceptPage} name="rsvpAccept" />
       </Set>
       <Route notfound page={NotFoundPage} />
     </Router>
